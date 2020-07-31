@@ -18,20 +18,20 @@ abstract class Validator implements ValidatorInterface
 {
     public const ATTR_PAYLOAD = '_payload';
 
-    private ValidatorDefinition $definition;
+    private ValidatorDefinition $validatorDefinition;
 
     private array $imports = [];
 
-    public function __construct(ValidatorDefinition $definition)
+    public function __construct(ValidatorDefinition $validatorDefinition)
     {
-        $this->definition = $definition;
+        $this->validatorDefinition = $validatorDefinition;
     }
 
     public function __invoke(ServerRequestInterface $request): ServerRequestInterface
     {
         //@todo support multiple arguments in a validator
-        $argument = $this->definition->getArgument();
-        $settings = $this->definition->getSettings();
+        $argument = $this->validatorDefinition->getArgument();
+        $settings = $this->validatorDefinition->getSettings();
         $payload = $request->getAttribute(self::ATTR_PAYLOAD, []);
 
         $validationMethod = 'validate'.ucfirst(ltrim($argument, '_'));
@@ -75,7 +75,7 @@ abstract class Validator implements ValidatorInterface
 
     protected function getSettings(): array
     {
-        return $this->definition->getSettings();
+        return $this->validatorDefinition->getSettings();
     }
 
     protected function getImports(): array
@@ -85,7 +85,7 @@ abstract class Validator implements ValidatorInterface
 
     protected function getArgument(): string
     {
-        return $this->definition->getArgument();
+        return $this->validatorDefinition->getArgument();
     }
 
     private function parseBody(ServerRequestInterface $request): array

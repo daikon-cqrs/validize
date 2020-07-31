@@ -12,16 +12,16 @@ use Daikon\Validize\ValueObject\Severity;
 
 final class ValidationIncident
 {
-    private ValidatorDefinition $definition;
+    private ValidatorDefinition $validatorDefinition;
 
     private Severity $severity;
 
     /** @var string[] */
     private array $messages = [];
 
-    public function __construct(ValidatorDefinition $definition, Severity $severity)
+    public function __construct(ValidatorDefinition $validatorDefinition, Severity $severity)
     {
-        $this->definition = $definition;
+        $this->validatorDefinition = $validatorDefinition;
         $this->severity = $severity;
     }
 
@@ -31,9 +31,9 @@ final class ValidationIncident
         return $this;
     }
 
-    public function getDefinition(): ValidatorDefinition
+    public function getValidatorDefinition(): ValidatorDefinition
     {
-        return $this->definition;
+        return $this->validatorDefinition;
     }
 
     public function getSeverity(): Severity

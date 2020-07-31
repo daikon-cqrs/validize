@@ -36,7 +36,7 @@ final class ValidationReport extends TypedList
         /** @var ValidationIncident $incident */
         foreach ($this as $incident) {
             foreach ($incident->getMessages() as $message) {
-                $messages[$incident->getDefinition()->getArgument()][] = $message;
+                $messages[$incident->getValidatorDefinition()->getArgument()][] = $message;
             }
         }
         return $messages;
@@ -47,7 +47,7 @@ final class ValidationReport extends TypedList
         //returns first seen
         return $this->reduce(
             function (?int $status, ValidationIncident $incident): ?int {
-                return $status ?? ($incident->getDefinition()->getSettings()['status'] ?? null);
+                return $status ?? ($incident->getValidatorDefinition()->getSettings()['status'] ?? null);
             }
         );
     }
@@ -56,7 +56,8 @@ final class ValidationReport extends TypedList
     {
         return $this->getIncidents(Severity::success())->reduce(
             function (bool $carry, ValidationIncident $incident) use ($provides): bool {
-                return $carry || $provides === ($incident->getDefinition()->getSettings()['provides'] ?? null);
+                return $carry
+                    || $provides === ($incident->getValidatorDefinition()->getSettings()['provides'] ?? null);
             },
             false
         );
