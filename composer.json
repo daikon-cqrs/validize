@@ -1,0 +1,54 @@
+{
+    "name": "daikon/validize",
+    "type": "library",
+    "description": "Validation components for Daikon-CQRS projects.",
+    "keywords": ["validation", "value-object"],
+    "homepage": "https://github.com/daikon-cqrs/validize",
+    "license": "MPL-2.0",
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4",
+        "daikon/data-structure": "master@dev",
+        "daikon/interop": "master@dev",
+        "daikon/value-object": "master@dev",
+        "egulias/email-validator": "^2.1",
+        "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "sebastian/phpcpd": "^5.0",
+        "squizlabs/php_codesniffer": "^3.3",
+        "symfony/var-dumper": "^5.0",
+        "vimeo/psalm": "^3.0"
+    },
+    "autoload": {
+        "psr-4": { "Daikon\\Validize\\" : "src" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Daikon\\Tests\\Validize\\": "tests" }
+    },
+    "archive": {
+        "exclude": [
+            "/build",
+            "/vendor"
+        ]
+    },
+    "scripts": {
+        "build": [ "@sniff", "@tests" ],
+        "code-sniffer": "phpcs -p -s --extensions=php --standard='PSR1,PSR2' src tests",
+        "code-sniffer-autofix": "phpcbf --standard=PSR2 -d tabWidth=4 src tests",
+        "copy-paste-detector": "phpcpd src tests || true",
+        "psalm": "psalm --shepherd --show-info=true",
+        "sniff": [
+            "@code-sniffer",
+            "@copy-paste-detector",
+            "@validate-json",
+            "@psalm"
+        ],
+        "test": "phpunit --no-coverage",
+        "tests": "phpunit",
+        "validate-deps": "composer validate --with-dependencies --strict",
+        "validate-json": "composer validate --no-check-all --no-check-lock"
+    }
+}
