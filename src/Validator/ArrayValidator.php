@@ -16,7 +16,7 @@ final class ArrayValidator extends Validator
     /** @param mixed $input */
     protected function validate($input): array
     {
-        $name = $this->getArgument();
+        $name = $this->getName();
         $settings = $this->getSettings();
         $values = $settings['values'] ?? [];
 

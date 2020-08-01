@@ -23,7 +23,7 @@ final class TextListValidator extends Validator
     {
         Assertion::isArray($input, 'Must be an array.');
 
-        $name = $this->getArgument();
+        $name = $this->getName();
         $settings = $this->getSettings();
         $size = $settings['size'] ?? self::MAX_SIZE;
         $min = $settings['min'] ?? self::MIN_TEXT_LEN;

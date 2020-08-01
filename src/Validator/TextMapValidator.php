@@ -23,8 +23,8 @@ final class TextMapValidator extends Validator
     {
         Assertion::isArray($input, 'Must be an array.');
 
+        $name = $this->getName();
         $settings = $this->getSettings();
-        $name = $this->getArgument();
         $size = $settings['size'] ?? self::MAX_SIZE;
         $keys = $settings['keys'] ?? [];
         $min = $settings['min'] ?? self::MIN_TEXT_LEN;

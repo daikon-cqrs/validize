@@ -8,9 +8,10 @@
 
 namespace Daikon\Validize\Validator;
 
-use Psr\Http\Message\ServerRequestInterface;
+use Daikon\Validize\Validation\ValidatorDefinition;
 
 interface ValidatorInterface
 {
-    public function __invoke(ServerRequestInterface $request): ServerRequestInterface;
+    /** @return mixed */
+    public function __invoke(ValidatorDefinition $validatorDefinition);
 }

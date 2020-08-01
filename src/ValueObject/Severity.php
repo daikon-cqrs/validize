@@ -26,7 +26,7 @@ final class Severity implements ValueObjectInterface
     /** @param int|string $severity */
     public static function fromNative($severity): self
     {
-        Assertion::integerish($severity. 'Must be an integer.');
+        Assertion::integerish($severity, 'Must be an integer.');
         return new self((int)$severity);
     }
 
@@ -65,6 +65,41 @@ final class Severity implements ValueObjectInterface
     {
         Assertion::isInstanceOf($comparator, self::class);
         return $this->toNative() === $comparator->toNative();
+    }
+
+    public function isUnexecuted(): bool
+    {
+        return $this->severity === self::UNEXECUTED;
+    }
+
+    public function isSilent(): bool
+    {
+        return $this->severity === self::SILENT;
+    }
+
+    public function isSuccess(): bool
+    {
+        return $this->severity === self::SUCCESS;
+    }
+
+    public function isNotice(): bool
+    {
+        return $this->severity === self::NOTICE;
+    }
+
+    public function isError(): bool
+    {
+        return $this->severity === self::ERROR;
+    }
+
+    public function isCritical(): bool
+    {
+        return $this->severity === self::CRITICAL;
+    }
+
+    public function isGreaterThan(Severity $comparator): bool
+    {
+        return $this->toNative() > $comparator->toNative();
     }
 
     public function isGreaterThanOrEqual(Severity $comparator): bool

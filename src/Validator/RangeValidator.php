@@ -22,7 +22,7 @@ final class RangeValidator extends Validator
         $limit = $settings['limit'] ?? self::SIZE_LIMIT;
 
         Assert::that($input)->string('Must be a string.')->regex('/^\[\d+,\d+\]$/', 'Invalid format.');
-
+        
         $nativeRange = array_map('intval', explode(',', trim($input, '[]')));
         $range = Range::fromNative($nativeRange);
 

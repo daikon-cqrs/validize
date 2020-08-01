@@ -8,69 +8,25 @@
 
 namespace Daikon\Validize\Validator;
 
-use Daikon\Interop\Assertion;
-use Daikon\Interop\InvalidArgumentException;
-use Daikon\Interop\RuntimeException;
 use Daikon\Validize\Validation\ValidatorDefinition;
-use Psr\Http\Message\ServerRequestInterface;
 
 abstract class Validator implements ValidatorInterface
 {
-    public const ATTR_PAYLOAD = '_payload';
-
     private ValidatorDefinition $validatorDefinition;
 
-    private array $imports = [];
-
-    public function __construct(ValidatorDefinition $validatorDefinition)
+    public function __invoke(ValidatorDefinition $validatorDefinition)
     {
         $this->validatorDefinition = $validatorDefinition;
+        $name = $validatorDefinition->getName();
+        $validationMethod = 'validate'.ucfirst(trim($name, ' _'));
+        $validationCallable = [$this, $validationMethod];
+        $validationCallable = is_callable($validationCallable) ? $validationCallable : [$this, 'validate'];
+        return $validationCallable($validatorDefinition->getArgument());
     }
 
-    public function __invoke(ServerRequestInterface $request): ServerRequestInterface
+    protected function getName(): string
     {
-        //@todo support multiple arguments in a validator
-        $argument = $this->validatorDefinition->getArgument();
-        $settings = $this->validatorDefinition->getSettings();
-        $payload = $request->getAttribute(self::ATTR_PAYLOAD, []);
-
-        $validationMethod = 'validate'.ucfirst(ltrim($argument, '_'));
-        $validationCallback = [$this, $validationMethod];
-        $validationCallback = is_callable($validationCallback) ? $validationCallback : [$this, 'validate'];
-        if (!is_callable($validationCallback)) {
-            throw new RuntimeException("Missing required validation method 'validate' or '$validationMethod'.");
-        }
-
-        //@todo better convert body and query params to attributes
-        //@todo use 'source' settings for headers
-        $queryParams = [];
-        parse_str($request->getUri()->getQuery(), $queryParams);
-        $mergedInput = array_merge($this->parseBody($request), $queryParams, $request->getAttributes());
-
-        if (!array_key_exists($argument, $mergedInput)) {
-            if ($settings['required'] ?? true) {
-                throw new InvalidArgumentException('Missing required input.');
-            }
-            if (!array_key_exists('default', $settings)) {
-                return $request;
-            }
-            $result = $settings['default'];
-        } else {
-            if (array_key_exists('import', $settings)) {
-                foreach ((array)$settings['import'] as $import) {
-                    if (!array_key_exists($import, $payload)) {
-                        throw new InvalidArgumentException("Missing required import '$import'.");
-                    }
-                    $this->imports[$import] = $payload[$import];
-                }
-            }
-            $result = $validationCallback($mergedInput[$argument]);
-        }
-
-        return $request->withAttribute(
-            self::ATTR_PAYLOAD,
-            array_merge_recursive($payload, [($settings['export'] ?? $argument) => $result])
-        );
+        return $this->validatorDefinition->getName();
     }
 
     protected function getSettings(): array
@@ -80,26 +36,6 @@ abstract class Validator implements ValidatorInterface
 
     protected function getImports(): array
     {
-        return $this->imports;
-    }
-
-    protected function getArgument(): string
-    {
-        return $this->validatorDefinition->getArgument();
-    }
-
-    private function parseBody(ServerRequestInterface $request): array
-    {
-        $contentType = $request->getHeaderLine('Content-Type');
-
-        if (strpos(trim($contentType), 'application/json') === 0) {
-            $data = json_decode((string)$request->getBody(), true);
-        } else {
-            $data = $request->getParsedBody();
-        }
-
-        Assertion::nullOrIsArray($data, 'Failed to parse data from request body.');
-
-        return (array)$data;
+        return $this->validatorDefinition->getImports();
     }
 }

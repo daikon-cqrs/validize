@@ -12,30 +12,27 @@ use Daikon\Validize\ValueObject\Severity;
 
 final class ValidatorDefinition
 {
-    private string $argument;
-
-    private string $implementor;
+    private string $name;
 
     private Severity $severity;
 
     private array $settings;
 
-    public function __construct(string $argument, string $implementor, Severity $severity, array $settings = [])
+    /** @var mixed */
+    private $argument;
+
+    private array $imports = [];
+
+    public function __construct(string $name, Severity $severity, array $settings = [])
     {
-        $this->argument = $argument;
-        $this->implementor = $implementor;
+        $this->name = $name;
         $this->severity = $severity;
         $this->settings = $settings;
     }
 
-    public function getArgument(): string
+    public function getName(): string
     {
-        return $this->argument;
-    }
-
-    public function getImplementor(): string
-    {
-        return $this->implementor;
+        return $this->name;
     }
 
     public function getSeverity(): Severity
@@ -46,5 +43,32 @@ final class ValidatorDefinition
     public function getSettings(): array
     {
         return $this->settings;
+    }
+
+    /** @return mixed */
+    public function getArgument()
+    {
+        return $this->argument;
+    }
+
+    /** @param mixed $argument */
+    public function withArgument($argument): self
+    {
+        $copy = clone $this;
+        $copy->argument = is_object($argument) ? clone $argument : $argument;
+        return $copy;
+    }
+
+    public function getImports(): array
+    {
+        return $this->imports;
+    }
+
+    /** @param mixed $import */
+    public function withImport(string $name, $import): self
+    {
+        $copy = clone $this;
+        $copy->imports[$name] = is_object($import) ? clone $import : $import;
+        return $copy;
     }
 }
