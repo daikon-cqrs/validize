@@ -52,13 +52,13 @@ final class ValidationReport extends TypedList
         );
     }
 
-    public function isProvided(string $provides): bool
+    public function isProvided(string $depends): bool
     {
+        //@todo handle array $depends
         return $this->reduce(
-            function (bool $carry, ValidationIncident $incident) use ($provides): bool {
-                return $carry
-                    || ($incident->getSeverity()->isSuccess()
-                    && $provides === ($incident->getValidatorDefinition()->getSettings()['provides'] ?? null));
+            function (bool $carry, ValidationIncident $incident) use ($depends): bool {
+                $provided = (array)($incident->getValidatorDefinition()->getSettings()['provides'] ?? []);
+                return $carry || ($incident->getSeverity()->isSuccess() && in_array($depends, $provided));
             },
             false
         );

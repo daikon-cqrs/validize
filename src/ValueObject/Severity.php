@@ -19,7 +19,7 @@ final class Severity implements ValueObjectInterface
     public const NOTICE = 200;
     public const SILENT = 100;
     public const SUCCESS = 0;
-    public const UNEXECUTED = -1;
+    public const UNPROCESSED = -1;
 
     private int $severity;
 
@@ -55,9 +55,9 @@ final class Severity implements ValueObjectInterface
         return new self(self::SUCCESS);
     }
 
-    public static function unexecuted(): self
+    public static function unprocessed(): self
     {
-        return new self(self::UNEXECUTED);
+        return new self(self::UNPROCESSED);
     }
 
     /** @param self $comparator */
@@ -67,9 +67,9 @@ final class Severity implements ValueObjectInterface
         return $this->toNative() === $comparator->toNative();
     }
 
-    public function isUnexecuted(): bool
+    public function isUnprocessed(): bool
     {
-        return $this->severity === self::UNEXECUTED;
+        return $this->severity === self::UNPROCESSED;
     }
 
     public function isSilent(): bool

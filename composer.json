@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.4",
         "daikon/data-structure": "master@dev",
+        "daikon/entity": "master@dev",
         "daikon/interop": "master@dev",
         "daikon/value-object": "master@dev",
         "egulias/email-validator": "^2.1"

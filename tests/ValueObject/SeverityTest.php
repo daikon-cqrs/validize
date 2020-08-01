@@ -14,13 +14,13 @@ use PHPUnit\Framework\TestCase;
 
 final class SeverityTest extends TestCase
 {
-    public function testUnexecuted(): void
+    public function testUnprocessed(): void
     {
-        $severity = Severity::fromNative(Severity::UNEXECUTED);
+        $severity = Severity::fromNative(Severity::UNPROCESSED);
         $this->assertEquals(-1, $severity->toNative());
         $this->assertEquals('-1', (string)$severity);
-        $this->assertTrue($severity->isUnexecuted());
-        $this->assertEquals(Severity::unexecuted(), $severity);
+        $this->assertTrue($severity->isUnprocessed());
+        $this->assertEquals(Severity::unprocessed(), $severity);
     }
 
     public function testSuccess(): void
