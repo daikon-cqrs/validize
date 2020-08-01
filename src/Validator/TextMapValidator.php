@@ -23,7 +23,7 @@ final class TextMapValidator extends Validator
     {
         Assertion::isArray($input, 'Must be an array.');
 
-        $name = $this->getName();
+        $path = $this->getPath();
         $settings = $this->getSettings();
         $size = $settings['size'] ?? self::MAX_SIZE;
         $keys = $settings['keys'] ?? [];
@@ -37,7 +37,7 @@ final class TextMapValidator extends Validator
         $formatAssertion = Assert::lazy();
         foreach ($input as $key => $item) {
             $formatAssertion
-                ->that($key, $name)
+                ->that($key, $path)
                 ->string('Key must be a string.')
                 ->notBlank('Key must not be blank.');
 
@@ -46,9 +46,9 @@ final class TextMapValidator extends Validator
             }
 
             $formatAssertion
-                ->that($item, $name)
-                ->string($name."[$key] must be a string.")
-                ->betweenLength($min, $max, $name."[$key] must be between $min and $max characters.");
+                ->that($item, $path)
+                ->string($path."[$key] must be a string.")
+                ->betweenLength($min, $max, $path."[$key] must be between $min and $max characters.");
         }
         $formatAssertion->verifyNow();
 

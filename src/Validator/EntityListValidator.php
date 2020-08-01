@@ -18,23 +18,23 @@ final class EntityListValidator extends Validator
     /** @param mixed $input */
     protected function validate($input): EntityList
     {
-        $name = $this->getName();
+        $path = $this->getPath();
 
         Assert::that($input)
             ->isArray('Must be an array.')
-            ->satisfy(function (array $items) use ($name): void {
+            ->satisfy(function (array $items) use ($path): void {
                 $formatAssertion = Assert::lazy();
                 $typeAssertion = Assert::lazy();
                 foreach ($items as $index => $item) {
                     $formatAssertion
-                        ->that($item, $name)
-                        ->isArray($name."[$index] must be an array.")
-                        ->notEmpty($name."[$index] must not be empty.");
+                        ->that($item, $path)
+                        ->isArray($path."[$index] must be an array.")
+                        ->notEmpty($path."[$index] must not be empty.");
                     $typeAssertion
-                        ->that($item, $name)
+                        ->that($item, $path)
                         ->keyExists(
                             EntityInterface::TYPE_KEY,
-                            'Required input for '.$name."[$index] '".EntityInterface::TYPE_KEY."' is missing."
+                            'Required input for '.$path."[$index] '".EntityInterface::TYPE_KEY."' is missing."
                         );
                 }
                 $formatAssertion->verifyNow();

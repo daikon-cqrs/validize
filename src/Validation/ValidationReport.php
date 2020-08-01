@@ -18,6 +18,14 @@ final class ValidationReport extends TypedList
         $this->init($incidents, [ValidationIncident::class]);
     }
 
+    public function getIncident(string $path): ?ValidationIncident
+    {
+        $index = $this->search(
+            fn(ValidationIncident $incident): bool => $incident->getValidatorDefinition()->getPath() === $path
+        );
+        return $index !== false ? $this->get($index) : null;
+    }
+
     public function getIncidents(Severity $severity): self
     {
         return $this->filter(
@@ -27,7 +35,9 @@ final class ValidationReport extends TypedList
 
     public function getErrors(): self
     {
-        return $this->getIncidents(Severity::error())->append($this->getIncidents(Severity::critical()));
+        return $this->filter(
+            fn(ValidationIncident $incident): bool => $incident->getSeverity()->isGreaterThanOrEqual(Severity::error())
+        );
     }
 
     public function getMessages(): array
@@ -35,9 +45,7 @@ final class ValidationReport extends TypedList
         $messages = [];
         /** @var ValidationIncident $incident */
         foreach ($this as $incident) {
-            foreach ($incident->getMessages() as $message) {
-                $messages[$incident->getValidatorDefinition()->getName()][] = $message;
-            }
+            $messages[$incident->getValidatorDefinition()->getPath()] = $incident->getMessages();
         }
         return $messages;
     }

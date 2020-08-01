@@ -17,16 +17,17 @@ abstract class Validator implements ValidatorInterface
     public function __invoke(ValidatorDefinition $validatorDefinition)
     {
         $this->validatorDefinition = $validatorDefinition;
-        $name = $validatorDefinition->getName();
-        $validationMethod = 'validate'.ucfirst(trim($name, ' _'));
+        $path = $validatorDefinition->getPath();
+        //@todo path/method mapping
+        $validationMethod = 'validate'.ucfirst(trim($path, ' _'));
         $validationCallable = [$this, $validationMethod];
         $validationCallable = is_callable($validationCallable) ? $validationCallable : [$this, 'validate'];
         return $validationCallable($validatorDefinition->getArgument());
     }
 
-    protected function getName(): string
+    protected function getPath(): string
     {
-        return $this->validatorDefinition->getName();
+        return $this->validatorDefinition->getPath();
     }
 
     protected function getSettings(): array

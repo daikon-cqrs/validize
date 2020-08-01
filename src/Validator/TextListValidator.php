@@ -23,7 +23,7 @@ final class TextListValidator extends Validator
     {
         Assertion::isArray($input, 'Must be an array.');
 
-        $name = $this->getName();
+        $path = $this->getPath();
         $settings = $this->getSettings();
         $size = $settings['size'] ?? self::MAX_SIZE;
         $min = $settings['min'] ?? self::MIN_TEXT_LEN;
@@ -36,9 +36,9 @@ final class TextListValidator extends Validator
         $formatAssertion = Assert::lazy();
         foreach ($input as $index => $item) {
             $formatAssertion
-                ->that($item, $name)
-                ->string($name."[$index] must be a string.")
-                ->betweenLength($min, $max, $name."[$index] must be between $min and $max characters.");
+                ->that($item, $path)
+                ->string($path."[$index] must be a string.")
+                ->betweenLength($min, $max, $path."[$index] must be between $min and $max characters.");
         }
         $formatAssertion->verifyNow();
 

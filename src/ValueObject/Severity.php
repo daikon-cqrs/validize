@@ -97,14 +97,14 @@ final class Severity implements ValueObjectInterface
         return $this->severity === self::CRITICAL;
     }
 
-    public function isGreaterThan(Severity $comparator): bool
-    {
-        return $this->toNative() > $comparator->toNative();
-    }
-
     public function isGreaterThanOrEqual(Severity $comparator): bool
     {
         return $this->toNative() >= $comparator->toNative();
+    }
+
+    public function isLessThanOrEqual(Severity $comparator): bool
+    {
+        return $this->toNative() <= $comparator->toNative();
     }
 
     public function toNative(): int

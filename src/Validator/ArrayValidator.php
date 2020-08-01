@@ -16,7 +16,7 @@ final class ArrayValidator extends Validator
     /** @param mixed $input */
     protected function validate($input): array
     {
-        $name = $this->getName();
+        $path = $this->getPath();
         $settings = $this->getSettings();
         $values = $settings['values'] ?? [];
 
@@ -24,13 +24,13 @@ final class ArrayValidator extends Validator
 
         Assert::that($input)
             ->isArray('Must be an array.')
-            ->satisfy(function (array $items) use ($name, $values): void {
+            ->satisfy(function (array $items) use ($path, $values): void {
                 $formatAssertion = Assert::lazy();
                 foreach ($items as $key => $item) {
                     $formatAssertion
-                        ->that($item, $name)
-                        ->notBlank($name."[$key] must not be blank.")
-                        ->inArray($values, $name."[$key] '$item' is not a valid value.");
+                        ->that($item, $path)
+                        ->notBlank($path."[$key] must not be blank.")
+                        ->inArray($values, $path."[$key] '$item' is not a valid value.");
                 }
                 $formatAssertion->verifyNow();
             });
