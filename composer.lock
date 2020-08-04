@@ -126,12 +126,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/data-structure.git",
-                "reference": "eb8e1b5760cbcc38db990f5710579e3a0209e7a1"
+                "reference": "a5b230c429e6c149eb08b1952f58f68801375470"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/data-structure/zipball/eb8e1b5760cbcc38db990f5710579e3a0209e7a1",
-                "reference": "eb8e1b5760cbcc38db990f5710579e3a0209e7a1",
+                "url": "https://api.github.com/repos/daikon-cqrs/data-structure/zipball/a5b230c429e6c149eb08b1952f58f68801375470",
+                "reference": "a5b230c429e6c149eb08b1952f58f68801375470",
                 "shasum": ""
             },
             "require": {
@@ -167,7 +167,7 @@
                 "map",
                 "vector"
             ],
-            "time": "2020-07-14T21:01:37+00:00"
+            "time": "2020-08-04T14:10:28+00:00"
         },
         {
             "name": "daikon/entity",
@@ -175,12 +175,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/entity.git",
-                "reference": "9fe245a1bd28c59641ee97f720a1774890316921"
+                "reference": "bd6a91d71f5ef69b94387df807aa387b8040df5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/entity/zipball/9fe245a1bd28c59641ee97f720a1774890316921",
-                "reference": "9fe245a1bd28c59641ee97f720a1774890316921",
+                "url": "https://api.github.com/repos/daikon-cqrs/entity/zipball/bd6a91d71f5ef69b94387df807aa387b8040df5e",
+                "reference": "bd6a91d71f5ef69b94387df807aa387b8040df5e",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +212,7 @@
                 "attribute",
                 "entity"
             ],
-            "time": "2020-07-14T21:26:00+00:00"
+            "time": "2020-08-04T18:03:21+00:00"
         },
         {
             "name": "daikon/interop",
@@ -220,12 +220,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/interop.git",
-                "reference": "99a21b736d28f79071d80fff6540836373b5b6b7"
+                "reference": "a2594429de9dd4fe4c3210aa57e1686397cecc0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/interop/zipball/99a21b736d28f79071d80fff6540836373b5b6b7",
-                "reference": "99a21b736d28f79071d80fff6540836373b5b6b7",
+                "url": "https://api.github.com/repos/daikon-cqrs/interop/zipball/a2594429de9dd4fe4c3210aa57e1686397cecc0b",
+                "reference": "a2594429de9dd4fe4c3210aa57e1686397cecc0b",
                 "shasum": ""
             },
             "require": {
@@ -250,7 +250,7 @@
             ],
             "description": "Interoperability code used across Daikon-CQRS components.",
             "homepage": "https://github.com/daikon-cqrs/interop",
-            "time": "2020-07-14T20:10:48+00:00"
+            "time": "2020-08-04T14:05:27+00:00"
         },
         {
             "name": "daikon/value-object",
@@ -258,12 +258,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/value-object.git",
-                "reference": "716ba72c07f3127c208eff389ab86c5f78ef30ec"
+                "reference": "3ef45c6657599d7934ec7d671c7fb3b3bd5f75a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/value-object/zipball/716ba72c07f3127c208eff389ab86c5f78ef30ec",
-                "reference": "716ba72c07f3127c208eff389ab86c5f78ef30ec",
+                "url": "https://api.github.com/repos/daikon-cqrs/value-object/zipball/3ef45c6657599d7934ec7d671c7fb3b3bd5f75a9",
+                "reference": "3ef45c6657599d7934ec7d671c7fb3b3bd5f75a9",
                 "shasum": ""
             },
             "require": {
@@ -293,7 +293,7 @@
             "keywords": [
                 "value-object"
             ],
-            "time": "2020-07-31T18:36:54+00:00"
+            "time": "2020-08-04T17:49:44+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -771,7 +771,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -847,16 +847,16 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "bc6549d068d0160e0f10f7a5a23c7d1406b95ebe"
+                "reference": "5dcab1bc7146cf8c1beaa4502a3d9be344334251"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/bc6549d068d0160e0f10f7a5a23c7d1406b95ebe",
-                "reference": "bc6549d068d0160e0f10f7a5a23c7d1406b95ebe",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/5dcab1bc7146cf8c1beaa4502a3d9be344334251",
+                "reference": "5dcab1bc7146cf8c1beaa4502a3d9be344334251",
                 "shasum": ""
             },
             "require": {
@@ -928,11 +928,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-14T12:35:20+00:00"
+            "time": "2020-08-04T06:02:08+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
@@ -1013,7 +1013,7 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
@@ -1090,7 +1090,7 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
@@ -2483,16 +2483,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "5672711b6b07b14d5ab694e700c62eeb82fcf374"
+                "reference": "a853a0e183b9db7eed023d7933a858fa1c8d25a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/5672711b6b07b14d5ab694e700c62eeb82fcf374",
-                "reference": "5672711b6b07b14d5ab694e700c62eeb82fcf374",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/a853a0e183b9db7eed023d7933a858fa1c8d25a3",
+                "reference": "a853a0e183b9db7eed023d7933a858fa1c8d25a3",
                 "shasum": ""
             },
             "require": {
@@ -2534,7 +2534,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-06-27T06:36:25+00:00"
+            "time": "2020-08-04T08:28:15+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -3772,7 +3772,7 @@
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
@@ -3850,7 +3850,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -3927,7 +3927,7 @@
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php73.git",
@@ -4003,7 +4003,7 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
