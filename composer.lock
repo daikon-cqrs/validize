@@ -175,12 +175,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/entity.git",
-                "reference": "4924164dae26fb5c2a95fcb9184072c9afda17d7"
+                "reference": "fe72a688c1591766a886bde77df5a0a23c940094"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/entity/zipball/4924164dae26fb5c2a95fcb9184072c9afda17d7",
-                "reference": "4924164dae26fb5c2a95fcb9184072c9afda17d7",
+                "url": "https://api.github.com/repos/daikon-cqrs/entity/zipball/fe72a688c1591766a886bde77df5a0a23c940094",
+                "reference": "fe72a688c1591766a886bde77df5a0a23c940094",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +212,7 @@
                 "attribute",
                 "entity"
             ],
-            "time": "2020-08-17T19:05:25+00:00"
+            "time": "2020-08-17T21:54:36+00:00"
         },
         {
             "name": "daikon/interop",
@@ -3378,16 +3378,16 @@
         },
         {
             "name": "sebastian/phpcpd",
-            "version": "6.0.1",
+            "version": "6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpcpd.git",
-                "reference": "cf724b982a0f28455473867650802fea5cc2a65a"
+                "reference": "4f130523214c755c69d1d59297afdff206c7b029"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpcpd/zipball/cf724b982a0f28455473867650802fea5cc2a65a",
-                "reference": "cf724b982a0f28455473867650802fea5cc2a65a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpcpd/zipball/4f130523214c755c69d1d59297afdff206c7b029",
+                "reference": "4f130523214c755c69d1d59297afdff206c7b029",
                 "shasum": ""
             },
             "require": {
@@ -3431,7 +3431,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-13T12:03:35+00:00"
+            "time": "2020-08-18T13:27:23+00:00"
         },
         {
             "name": "sebastian/recursion-context",
